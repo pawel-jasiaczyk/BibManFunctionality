@@ -33,6 +33,7 @@ namespace BibManFunctionality
 	{
 		string Name{ get; }
 		IBibPositionUsable[] GetPositions();
+        event EventHandler DataBaseChanged;
 	}
 
 	public interface IBibFileOperable
