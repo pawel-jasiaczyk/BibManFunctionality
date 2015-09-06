@@ -10,8 +10,8 @@ namespace BibManFunctionality
 		bool Mark{ get; set;}
 		bool GetOptionState(string optionName);
 		bool GetOptionState(int optionNumber);
-		void SetOptionState(string optionName, bool state);
-		void SetOptionState(int optionNumber, bool state);
+		bool SetOptionState(string optionName, bool state);
+		bool SetOptionState(int optionNumber, bool state);
 	}
 
 	public interface IBibOptionParametrizable
