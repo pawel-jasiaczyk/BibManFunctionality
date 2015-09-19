@@ -127,7 +127,7 @@ namespace BibManFunctionality
 	{
 		Unix, Windows, MacOSX
 	}
-
+    // TODO dodać funkcje podawania kodowania oraz binarnej postaci danych byte[].
 	public interface IBibDataFile
 	{
 		string Path{ get; }
