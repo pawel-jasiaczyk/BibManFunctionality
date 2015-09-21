@@ -48,6 +48,7 @@ namespace BibManFunctionality
 		void OpenFile (string path);
 		void AddFile (string path);
 		void RemoveFile (string path);
+        void ProceedOpenedFiles();
 		void ClearBase();
 	}
 
