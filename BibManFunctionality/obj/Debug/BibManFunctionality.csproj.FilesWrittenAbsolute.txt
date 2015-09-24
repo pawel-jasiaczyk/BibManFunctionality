@@ -1,5 +1,0 @@
-/home/pawel/Dokumenty/PracaInzynierska/PracaInzynierska/BibManFunctionality/BibManFunctionality/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/home/pawel/Dokumenty/PracaInzynierska/PracaInzynierska/BibManFunctionality/BibManFunctionality/bin/Debug/BibManFunctionality.dll.mdb
-/home/pawel/Dokumenty/PracaInzynierska/PracaInzynierska/BibManFunctionality/BibManFunctionality/bin/Debug/BibManFunctionality.dll
-/home/pawel/Dokumenty/PracaInzynierska/PracaInzynierska/BibManFunctionality/BibManFunctionality/obj/Debug/BibManFunctionality.dll
-/home/pawel/Dokumenty/PracaInzynierska/PracaInzynierska/BibManFunctionality/BibManFunctionality/obj/Debug/BibManFunctionality.dll.mdb
