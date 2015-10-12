@@ -45,8 +45,8 @@ namespace BibManFunctionality
 	{
 //		string[] FullPath{get; }
 
-		void OpenFile (string path);
-		void AddFile (string path);
+        IBibDataFile OpenFile (string path);
+        IBibDataFile AddFile (string path);
 		void RemoveFile (string path);
         void ProceedOpenedFiles();
 		void ClearBase();
