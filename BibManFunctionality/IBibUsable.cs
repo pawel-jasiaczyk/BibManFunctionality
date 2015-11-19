@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace BibManFunctionality
 {
@@ -140,5 +141,11 @@ namespace BibManFunctionality
 	{
 		string Text{ get; }
 	}
+
+    public interface IBibTranslate
+    {
+        string Translate(string input);
+        Dictionary<string,string> Dictionary{ get; }
+    }
 }
 
