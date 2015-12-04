@@ -145,7 +145,7 @@ namespace BibManFunctionality
     public interface IBibTranslate
     {
         string Translate(string input);
-        Dictionary<string,string> Dictionary{ get; }
+//        Dictionary<string,string> Dictionary{ get; }
     }
 }
 
