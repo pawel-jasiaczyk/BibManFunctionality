@@ -15,20 +15,12 @@ namespace BibManFunctionality
         bool SetOptionState(int optionNumber, bool state);
     }
 
-    public interface IBibOptionParametrizable
-    { }
-
     public interface IBibSelectable
     {
         bool Selected { get; set; }
     }
 
     // interfejsy najwyższej warstwy
-    public interface IGuiAvanaible
-    {
-        GUI[] AvanaibleGUI { get; }
-        object GetGUIStartObject(GUI gui);
-    }
 
     public interface IBibUsable
     {
@@ -44,8 +36,6 @@ namespace BibManFunctionality
 
     public interface IBibReadable : IBibUsable, IBibFileOperable
     {
-        // string[] FullPath{get; }
-
         IBibDataFile OpenFile(string path);
         IBibDataFile AddFile(string path);
         void RemoveFile(string path);
@@ -68,16 +58,8 @@ namespace BibManFunctionality
         void ImportData(IBibUsable data);
     }
 
-    public interface IBibEditable : IBibUsable
-    {
-        string Name { get; set; }
-        bool AddPosition(string name);
-        bool AddPosition(IBibPositionUsable position);
-        bool RemovePosition(int positionNumber);
-    }
-
-    // interfejsy niższej warstwy - pozycje
-
+    //interfejsy wartstwy pozycji
+    
     public interface IBibPositionUsable
     {
         string Name { get; }
@@ -119,17 +101,10 @@ namespace BibManFunctionality
         void RemoveValue(int valueNumber);
         void ClearValue();
     }
+   
+    // intertfejsy nie związane z warstwami
 
-    public enum GUI
-    {
-        Console, WindowsForms, GTK, WPF, ASP, None
-    }
-
-    public enum OS
-    {
-        Unix, Windows, MacOSX
-    }
-    // TODO dodać funkcje podawania kodowania oraz binarnej postaci danych byte[].
+    //// TODO dodać funkcje podawania kodowania oraz binarnej postaci danych byte[].
     public interface IBibDataFile
     {
         string Path { get; }
@@ -145,7 +120,6 @@ namespace BibManFunctionality
     public interface IBibTranslate
     {
         string Translate(string input);
-        // Dictionary<string,string> Dictionary{ get; }
     }
 }
 
