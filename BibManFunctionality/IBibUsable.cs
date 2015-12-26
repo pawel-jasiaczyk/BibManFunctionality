@@ -123,5 +123,12 @@ namespace BibManFunctionality
     {
         string Translate(string input);
     }
+
+    public interface IBibMathTranslate
+    {
+        string TranslateMath(string input);
+        string TranslateMathMarker { get; set; }
+
+    }
 }
 
