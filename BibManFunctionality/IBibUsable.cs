@@ -2,6 +2,8 @@
 using System.IO;
 using System.Collections.Generic;
 
+// Komentarz testowy
+
 namespace BibManFunctionality
 {
     // interfejsy ogólnowarstwowe
