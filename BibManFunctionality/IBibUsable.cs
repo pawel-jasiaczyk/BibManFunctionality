@@ -4,148 +4,131 @@ using System.Collections.Generic;
 
 namespace BibManFunctionality
 {
-	// interfejsy ogólnowarstwowe
-	public interface IBibOptionSwitchable
-	{
-		string[] OptionsName{ get; }
-		bool Mark{ get; set;}
-		bool GetOptionState(string optionName);
-		bool GetOptionState(int optionNumber);
-		bool SetOptionState(string optionName, bool state);
-		bool SetOptionState(int optionNumber, bool state);
-	}
+    // interfejsy ogólnowarstwowe
+    public interface IBibOptionSwitchable
+    {
+        string[] OptionsName { get; }
+        bool Mark { get; set; }
+        bool GetOptionState(string optionName);
+        bool GetOptionState(int optionNumber);
+        bool SetOptionState(string optionName, bool state);
+        bool SetOptionState(int optionNumber, bool state);
+    }
 
-	public interface IBibOptionParametrizable
-	{}
+    public interface IBibSelectable
+    {
+        bool Selected { get; set; }
+    }
 
-	public interface IBibSelectable
-	{
-		bool Selected { get; set; }
-	}
+    // interfejsy najwyższej warstwy
 
-	// interfejsy najwyższej warstwy
-	public interface IGuiAvanaible
-	{
-		GUI[] AvanaibleGUI{ get; }
-		object GetGUIStartObject(GUI gui);
-	}
-
-	public interface IBibUsable
-	{
-		string Name{ get; }
-		IBibPositionUsable[] GetPositions();
+    public interface IBibUsable
+    {
+        string Name { get; }
+        IBibPositionUsable[] GetPositions();
         event EventHandler DataBaseChanged;
-	}
+    }
 
-	public interface IBibFileOperable
-	{
-		IBibDataFile[] Files{ get; }
-	}
+    public interface IBibFileOperable
+    {
+        IBibDataFile[] Files { get; }
+    }
 
-	public interface IBibReadable : IBibUsable, IBibFileOperable
-	{
-//		string[] FullPath{get; }
-
-        IBibDataFile OpenFile (string path);
-        IBibDataFile AddFile (string path);
-		void RemoveFile (string path);
+    public interface IBibReadable : IBibUsable, IBibFileOperable
+    {
+        IBibDataFile OpenFile(string path);
+        IBibDataFile AddFile(string path);
+        void RemoveFile(string path);
         void ProceedOpenedFiles();
-		void ClearBase();
-	}
+        void ClearBase();
+    }
 
-	public interface IBibWriteble : IBibUsable, IBibFileOperable
-	{
-		bool IsTextFile{ get; }
-		bool IsBinaryFile{ get; }
-		string GetFileText();
-		byte[] GetFileBytes();
-		string GetNativeFormatFileExtension();
-		string GetFileName();
-	}
+    public interface IBibWriteble : IBibUsable, IBibFileOperable
+    {
+        bool IsTextFile { get; }
+        bool IsBinaryFile { get; }
+        string GetFileText();
+        byte[] GetFileBytes();
+        string GetNativeFormatFileExtension();
+        string GetFileName();
+    }
 
-	public interface IBibImportable : IBibUsable
-	{
-		void ImportData(IBibUsable data);
-	}
+    public interface IBibImportable : IBibUsable
+    {
+        void ImportData(IBibUsable data);
+    }
 
-	public interface IBibEditable : IBibUsable
-	{
-		string Name{ get; set;}
-		bool AddPosition (string name);
-		bool AddPosition (IBibPositionUsable position);
-		bool RemovePosition (int positionNumber);
-	}
+    //interfejsy wartstwy pozycji
+    
+    public interface IBibPositionUsable
+    {
+        string Name { get; }
+        string PositionType { get; }
+        IBibUsable Parent { get; }
+        IBibFieldUsable[] GetFields();
+    }
 
-	// interfejsy niższej warstwy - pozycje
+    public interface IBibPositionEditable : IBibPositionUsable
+    {
+        string Name { get; set; }
+        string PositionType { get; set; }
+        IBibUsable Parent { get; set; }
+        bool AddField(string name);
+        bool AddField(string name, string value);
+        bool AddField(string name, string[] values);
+        bool AddField(IBibFieldUsable field);
+        bool RemoveField(int fieldNumber);
+        void ClearFields();
+    }
 
-	public interface IBibPositionUsable
-	{
-		string Name{ get; }
-		string PositionType{ get; }
-		IBibUsable Parent{ get; }
-		IBibFieldUsable[] GetFields();
-	}
+    // interfejsy wartswy pól
 
-	public interface IBibPositionEditable : IBibPositionUsable
-	{
-		string Name{ get; set; }
-		string PositionType{ get; set; }
-		IBibUsable Parent{ get; set; }
-		bool AddField (string name);
-		bool AddField (string name, string value);
-		bool AddField (string name, string[] values);
-		bool AddField (IBibFieldUsable field);
-		bool RemoveField(int fieldNumber);
-		void ClearFields();
-	}
+    public interface IBibFieldUsable
+    {
+        string Name { get; }
+        IBibPositionUsable Parent { get; }
+        bool AllowMultipleValues { get; }
+        string GetValue();
+        string[] GetValues();
+    }
 
-	// interfejsy wartswy pól
+    public interface IBibFieldEditable : IBibFieldUsable
+    {
+        string Name { get; set; }
+        IBibPositionUsable Parent { get; set; }
+        void SetValue(string value);
+        void AddValue(string value);
+        void RemoveValue(int valueNumber);
+        void ClearValue();
+    }
+   
+    // intertfejsy nie związane z warstwami
 
-	public interface IBibFieldUsable
-	{
-		string Name{ get; }
-		IBibPositionUsable Parent{ get; }
-		bool AllowMultipleValues{ get; }
-		string GetValue();
-		string[] GetValues();
-	}
+    //// TODO dodać funkcje podawania kodowania oraz binarnej postaci danych byte[].
+    public interface IBibDataFile
+    {
+        bool NewFile { get; set; }
+        string Path { get; }
+        string FileName { get; }
+        string FullName { get; }
+        FileInfo FileInfo { get; }
+    }
 
-	public interface IBibFieldEditable : IBibFieldUsable
-	{
-		string Name{ get; set; }
-		IBibPositionUsable Parent{ get; set; }
-		void SetValue(string value);
-		void AddValue(string value);
-		void RemoveValue(int valueNumber);
-		void ClearValue();
-	}
-
-	public enum GUI
-	{
-		Console, WindowsForms, GTK, WPF, ASP, None
-	}
-
-	public enum OS
-	{
-		Unix, Windows, MacOSX
-	}
-    // TODO dodać funkcje podawania kodowania oraz binarnej postaci danych byte[].
-	public interface IBibDataFile
-	{
-		string Path{ get; }
-		string FileName{ get; }
-		string FullName{ get; }
-	}
-
-	public interface IBibTextFile : IBibDataFile
-	{
-		string Text{ get; }
-	}
+    public interface IBibTextFile : IBibDataFile
+    {
+        string Text { get; }
+    }
 
     public interface IBibTranslate
     {
         string Translate(string input);
-//        Dictionary<string,string> Dictionary{ get; }
+    }
+
+    public interface IBibMathTranslate
+    {
+        string TranslateMath(string input);
+        string TranslateMathMarker { get; set; }
+
     }
 }
 
