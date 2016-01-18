@@ -1,0 +1,5 @@
+/home/pawel/Dokumenty/Inżynierka/Biblioteki/BibManFunctionality/BibManFunctionality/obj/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/pawel/Dokumenty/Inżynierka/Biblioteki/BibManFunctionality/BibManFunctionality/bin/Release/BibManFunctionality.dll.mdb
+/home/pawel/Dokumenty/Inżynierka/Biblioteki/BibManFunctionality/BibManFunctionality/bin/Release/BibManFunctionality.dll
+/home/pawel/Dokumenty/Inżynierka/Biblioteki/BibManFunctionality/BibManFunctionality/obj/Release/BibManFunctionality.dll
+/home/pawel/Dokumenty/Inżynierka/Biblioteki/BibManFunctionality/BibManFunctionality/obj/Release/BibManFunctionality.dll.mdb
