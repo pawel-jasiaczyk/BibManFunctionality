@@ -124,13 +124,13 @@ namespace BibManFunctionality
     public interface IBibTranslate
     {
         string Translate(string input);
+        string TranslateSpecialField(string fieldValue, string fieldName);
     }
 
     public interface IBibMathTranslate
     {
         string TranslateMath(string input);
         string TranslateMathMarker { get; set; }
-
     }
 }
 
